@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\{
     AdminContactController,
     AdminTestimonialController,
     AdminOrderController,
-    AdminPaymentController
+    AdminPaymentController,
+    AdminRatingController
 };
 
 // ===== ADMIN ROUTES =====
@@ -39,6 +40,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Produk
         Route::resource('products', AdminProductController::class)->except(['show']);
+        Route::delete('/ratings/{id}', [AdminRatingController::class, 'destroy'])->name('ratings.destroy');
 
         // Order
         Route::prefix('orders')->name('orders.')->group(function () {

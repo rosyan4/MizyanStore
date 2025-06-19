@@ -49,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 
+    // Produk
+    Route::post('/products/{id}/rate', [ProductController::class, 'rate'])->name('products.rate');
+
     // Profil Pengguna
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

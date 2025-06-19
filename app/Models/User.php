@@ -128,4 +128,8 @@ class User extends Authenticatable
         return $this->hasMany(Contact::class); 
     }
 
+    public function productRatings()
+    {
+        return $this->hasMany(ProductRating::class);
+    }
 }

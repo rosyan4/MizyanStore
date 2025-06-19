@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Product, Category};
+use App\Models\{Product, Category, ProductRating, OrderItem};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -56,6 +57,45 @@ class ProductController extends Controller
             ->take(4)
             ->get();
 
-        return view('products.show', compact('product', 'relatedProducts'));
+        $canReview = false;
+
+        if (Auth::check()) {
+            $userId = Auth::id();
+            $canReview = OrderItem::where('product_id', $product->id)
+                ->whereHas('order', function ($query) use ($userId) {
+                    $query->where('user_id', $userId)->where('status', 'completed');
+                })
+                ->exists();
+        }
+
+        return view('products.show', compact('product', 'relatedProducts', 'canReview'));
+    }
+
+    public function rate(Request $request, $id)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:1000'
+        ]);
+
+        $userId = Auth::id(); 
+
+        $hasPurchased = OrderItem::where('product_id', $id)
+            ->whereHas('order', function ($query) use ($userId) {
+                $query->where('user_id', $userId)
+                    ->where('status', 'completed');
+            })
+            ->exists();
+
+        if (! $hasPurchased) {
+            return back()->with('error', 'Anda hanya bisa memberi ulasan jika sudah membeli produk ini dan pesanan telah selesai.');
+        }
+
+        ProductRating::updateOrCreate(
+            ['user_id' => $userId, 'product_id' => $id],
+            ['rating' => $request->rating, 'comment' => $request->comment]
+        );
+
+        return back()->with('success', 'Terima kasih atas ulasan Anda!');
     }
 }

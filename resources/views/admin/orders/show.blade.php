@@ -130,6 +130,49 @@
                         </div>
                     @endif
 
+                    {{-- Ulasan Produk --}}
+                    @if($order->items->count() > 0)
+                        <div class="card mb-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">Ulasan Produk</h6>
+                            </div>
+                            <div class="card-body">
+                                @foreach($order->items as $item)
+                                    @php
+                                        $ratings = \App\Models\ProductRating::where('product_id', $item->product_id)
+                                            ->where('user_id', $order->user_id)
+                                            ->get();
+                                    @endphp
+
+                                    @foreach($ratings as $rating)
+                                        <div class="border rounded p-3 mb-3">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <strong>{{ $item->product->name }}</strong>
+                                                    <p class="mb-1">Rating: {{ $rating->rating }} / 5</p>
+                                                    @if($rating->comment)
+                                                        <p class="mb-1">Komentar: {{ $rating->comment }}</p>
+                                                    @endif
+                                                </div>
+                                                <form method="POST" action="{{ route('admin.ratings.destroy', $rating->id) }}" onsubmit="return confirm('Yakin ingin menghapus komentar ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash-alt"></i> Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+
+                                @if($order->items->flatMap->product->isEmpty())
+                                    <p class="text-muted">Belum ada ulasan untuk produk dalam pesanan ini.</p>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+
                     {{-- Form Update Status --}}
                     @if(in_array($order->status, ['pending', 'payment_verification', 'payment_accepted', 'payment_rejected', 'awaiting_reupload', 'processing','delivering']))
                         <div class="card">

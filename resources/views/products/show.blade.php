@@ -423,6 +423,374 @@
         }
     }
 
+    /* Rating System Styles */
+    .product-rating-summary {
+        background: var(--accent-color);
+        border-radius: 16px;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border: 1px solid var(--border-primary);
+        box-shadow: var(--shadow-light);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: var(--transition-smooth);
+    }
+
+    .product-rating-summary:hover {
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+    }
+
+    .rating-stars {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .rating-stars .star {
+        color: #FFD700;
+        font-size: 1.1rem;
+        text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3);
+    }
+
+    .rating-stars .star.empty {
+        color: var(--border-light);
+    }
+
+    .rating-number {
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .rating-count {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Rating Form Styles */
+    .rating-form {
+        background: var(--bg-white);
+        border-radius: 20px;
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow-light);
+        padding: 25px;
+        margin-top: 30px;
+        transition: var(--transition-smooth);
+    }
+
+    .rating-form:hover {
+        box-shadow: var(--shadow-medium);
+    }
+
+    .rating-form h5 {
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .rating-form h5::before {
+        content: "⭐";
+        font-size: 1.2rem;
+    }
+
+    .rating-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .rating-form label {
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .rating-form select,
+    .rating-form textarea {
+        border: 2px solid var(--border-light);
+        border-radius: 12px;
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        background: var(--bg-white);
+        transition: var(--transition-smooth);
+        width: 100%;
+        font-family: inherit;
+    }
+
+    .rating-form select:focus,
+    .rating-form textarea:focus {
+        outline: none;
+        border-color: var(--text-highlight);
+        box-shadow: 0 0 0 3px rgba(168, 113, 58, 0.1);
+    }
+
+    .rating-form select {
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23A8713A' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 12px center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        padding-right: 40px;
+        appearance: none;
+    }
+
+    .rating-form textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .rating-form textarea::placeholder {
+        color: var(--text-light);
+    }
+
+    .rating-form .btn {
+        background: linear-gradient(135deg, var(--text-highlight), var(--secondary-color));
+        color: var(--bg-white);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        box-shadow: var(--shadow-light);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .rating-form .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+        color: var(--bg-white);
+    }
+
+    .rating-form .btn::before {
+        content: "📝";
+        font-size: 0.9rem;
+    }
+
+    /* Alert Styles */
+    .alert {
+        border-radius: 16px;
+        border: none;
+        padding: 15px 20px;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        box-shadow: var(--shadow-light);
+    }
+
+    .alert-warning {
+        background: linear-gradient(135deg, #FEF3C7, #FBBF24);
+        color: #92400E;
+        border-left: 4px solid #F59E0B;
+    }
+
+    .alert-warning::before {
+        content: "⚠️ ";
+        margin-right: 8px;
+    }
+
+    /* Review List Styles */
+    .review-list {
+        margin-top: 40px;
+    }
+
+    .review-list h5 {
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .review-list h5::before {
+        content: "💬";
+        font-size: 1.2rem;
+    }
+
+    .review-item {
+        background: var(--bg-white);
+        border: 1px solid var(--border-light) !important;
+        border-radius: 16px !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition-smooth);
+        position: relative;
+    }
+
+    .review-item:hover {
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+    }
+
+    .review-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--text-highlight), var(--secondary-color));
+        border-radius: 16px 16px 0 0;
+    }
+
+    .review-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .review-user {
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .review-user::before {
+        content: "👤";
+        font-size: 0.9rem;
+    }
+
+    .review-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border-primary);
+    }
+
+    .review-rating-stars {
+        display: flex;
+        gap: 2px;
+    }
+
+    .review-rating-stars .star {
+        color: #FFD700;
+        font-size: 0.9rem;
+        text-shadow: 0 1px 2px rgba(255, 215, 0, 0.3);
+    }
+
+    .review-rating-stars .star.empty {
+        color: var(--border-light);
+    }
+
+    .review-rating-number {
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .review-comment {
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+        padding-top: 10px;
+        border-top: 1px solid var(--border-light);
+    }
+
+    .review-date {
+        color: var(--text-light);
+        font-size: 0.8rem;
+        margin-top: 10px;
+        font-style: italic;
+    }
+
+    /* Interactive Rating Stars */
+    .interactive-rating {
+        display: flex;
+        gap: 5px;
+        margin: 10px 0;
+    }
+
+    .interactive-rating .star {
+        font-size: 1.5rem;
+        color: var(--border-light);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        user-select: none;
+    }
+
+    .interactive-rating .star:hover,
+    .interactive-rating .star.active {
+        color: #FFD700;
+        text-shadow: 0 2px 4px rgba(255, 215, 0, 0.4);
+        transform: scale(1.1);
+    }
+
+    .interactive-rating .star:hover ~ .star {
+        color: var(--border-light);
+    }
+
+    /* No Reviews State */
+    .no-reviews {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-light);
+        font-style: italic;
+    }
+
+    .no-reviews::before {
+        content: "📝";
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Responsive Design for Rating System */
+    @media (max-width: 767.98px) {
+        .product-rating-summary {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 15px;
+        }
+        
+        .rating-form {
+            padding: 20px;
+            margin-top: 25px;
+        }
+        
+        .rating-form h5 {
+            font-size: 1.2rem;
+        }
+        
+        .review-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .review-item {
+            padding: 15px !important;
+        }
+        
+        .interactive-rating .star {
+            font-size: 1.3rem;
+        }
+    }
+
     /* Product Cards */
     .product-card {
         background: var(--bg-white);
@@ -656,14 +1024,12 @@
                              id="mainImage"
                              loading="lazy">
                     </div>
-                    
-                    <!-- Additional Images -->
+
                     @if(count($product->additional_images_urls) > 0)
                         <div class="thumbnail-container">
                             <img src="{{ asset('storage/' . $product->image) }}" 
                                  class="thumbnail-image active" 
                                  onclick="changeMainImage('{{ asset('storage/' . $product->image) }}', this)">
-                            
                             @foreach($product->additional_images_urls as $image)
                                 <img src="{{ $image }}" 
                                      class="thumbnail-image" 
@@ -672,11 +1038,19 @@
                         </div>
                     @endif
                 </div>
-                
+
                 <!-- Product Info -->
                 <div class="product-info-section">
                     <h1 class="product-title">{{ $product->name }}</h1>
-                    
+
+                    <!-- Rating Summary -->
+                    @if($product->ratings->count() > 0)
+                        <div class="product-rating-summary">
+                            <strong>Rating: {{ number_format($product->ratings->avg('rating'), 1) }} / 5</strong>
+                            ({{ $product->ratings->count() }} ulasan)
+                        </div>
+                    @endif
+
                     <div class="product-badges">
                         <span class="badge-custom">
                             <i class="fas fa-tag"></i>
@@ -689,11 +1063,11 @@
                             </span>
                         @endif
                     </div>
-                    
+
                     <div class="product-price">
                         Rp {{ number_format($product->price, 0, ',', '.') }}
                     </div>
-                    
+
                     <div class="stock-quantity-container">
                         <div class="stock-info">
                             <i class="fas fa-box"></i>
@@ -704,7 +1078,7 @@
                                 <span class="stock-unavailable">Habis</span>
                             @endif
                         </div>
-                        
+
                         @if($product->stock > 0)
                             <div class="quantity-container">
                                 <div class="quantity-wrapper">
@@ -725,12 +1099,11 @@
                             </div>
                         @endif
                     </div>
-                    
+
                     @if($product->stock > 0)
                         <form action="{{ route('orders.create') }}" method="GET">
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="quantity" id="hiddenQuantity" value="1">
-                            
                             <div class="action-buttons">
                                 <button type="submit" class="btn-buy-now">
                                     <i class="fas fa-shopping-cart"></i>
@@ -746,7 +1119,7 @@
                             </button>
                         </div>
                     @endif
-                    
+
                     <div class="description-card">
                         <div class="description-header">
                             <h5 class="description-title">
@@ -758,21 +1131,64 @@
                             {!! nl2br(e($product->description)) !!}
                         </div>
                     </div>
+
+                    <!-- Form Rating (jika login) -->
+                    @auth
+                        @if($canReview)
+                            <div class="rating-form mt-4">
+                                <h5>Berikan Penilaian Anda</h5>
+                                <form action="{{ route('products.rate', $product->id) }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="rating">Rating:</label>
+                                        <select name="rating" required class="form-control w-25">
+                                            <option value="">Pilih Rating</option>
+                                            @for($i = 1; $i <= 5; $i++)
+                                                <option value="{{ $i }}">{{ $i }} Bintang</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="comment">Komentar (opsional):</label>
+                                        <textarea name="comment" rows="3" class="form-control" placeholder="Tulis komentar..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Kirim</button>
+                                </form>
+                            </div>
+                        @else
+                            <div class="alert alert-warning mt-4">
+                                Anda hanya bisa memberikan ulasan jika sudah membeli dan menyelesaikan pesanan produk ini.
+                            </div>
+                        @endif
+                    @endauth
+
+                    <!-- Daftar Ulasan -->
+                    @if($product->ratings->count() > 0)
+                        <div class="review-list mt-5">
+                            <h5>Ulasan Pengguna</h5>
+                            @foreach($product->ratings as $review)
+                                <div class="review-item border p-3 rounded mb-3">
+                                    <strong>{{ $review->user->name }}</strong> 
+                                    <span class="text-muted">({{ $review->rating }} / 5)</span>
+                                    @if($review->comment)
+                                        <p class="mb-0">{{ $review->comment }}</p>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
 
-        <!-- Product Divider -->
-        <hr class="product-divider">
-
         <!-- Related Products -->
         @if(count($relatedProducts) > 0)
+            <hr class="product-divider">
             <div class="related-products-section fade-in stagger-2">
                 <h3 class="related-products-title">
                     <i class="fas fa-cubes"></i>
                     Produk Terkait
                 </h3>
-                
                 <div class="related-products-grid">
                     @foreach($relatedProducts as $index => $related)
                         <div class="product-card fade-in stagger-{{ min($index + 1, 3) }}">
@@ -783,14 +1199,12 @@
                                          loading="lazy">
                                 </a>
                             </div>
-                            
                             <div class="product-card-body">
                                 <h5 class="product-card-title">
-                                    <a href="{{ route('products.show', $related->slug) }}" class="product-card-title">
+                                    <a href="{{ route('products.show', $related->slug) }}">
                                         {{ Str::limit($related->name, 40) }}
                                     </a>
                                 </h5>
-                                
                                 <div class="product-card-price">
                                     Rp {{ number_format($related->price, 0, ',', '.') }}
                                 </div>

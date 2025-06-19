@@ -101,4 +101,9 @@ class Product extends Model
     {
         return $this->created_at->gt(now()->subDays(30));
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(ProductRating::class);
+    }
 }

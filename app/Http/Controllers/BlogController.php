@@ -24,17 +24,26 @@ class BlogController extends Controller
         return view('blog.index', compact('posts', 'categories'));
     }
 
+    public function show($slug)
+    {
+        $post = BlogPost::where('slug', $slug)
+            ->where('is_published', true)
+            ->firstOrFail();
 
-    public function show($slug) {
-    $post = BlogPost::where('slug', $slug)->where('is_published', true)->firstOrFail();
-    $relatedPosts = BlogPost::where('id', '!=', $post->id)
-        ->where('is_published', true)
-        ->latest('published_at')
-        ->take(3)
-        ->get();
-    
-    $categories = BlogCategory::where('is_active', true)->get(); // Tambahkan ini
-    
-    return view('blog.show', compact('post', 'relatedPosts', 'categories'));
-}
+        $sessionKey = 'viewed_post_' . $post->id;
+        if (!session()->has($sessionKey)) {
+            $post->increment('views');
+            session()->put($sessionKey, true);
+        }
+
+        $relatedPosts = BlogPost::where('id', '!=', $post->id)
+            ->where('is_published', true)
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+
+        $categories = BlogCategory::where('is_active', true)->get();
+
+        return view('blog.show', compact('post', 'relatedPosts', 'categories'));
+    }
 }
